@@ -1,3 +1,10 @@
+<script setup>
+import { ref } from "vue";
+
+const newNote = ref("");
+const notes = ref([]);
+</script>
+
 <template>
   <main>
     <header><h1>Vue Notes App</h1></header>
@@ -50,7 +57,8 @@ header {
   text-align: center;
   font-size: x-large;
   font-weight: bold;
-  background-color: darkslateblue;
+  /* background-color: darkslateblue; */
+  background-image: linear-gradient(to bottom right, darkslateblue, slateblue);
 }
 
 .add-note-container {
@@ -63,12 +71,23 @@ header {
 
 .add-note-container button {
   border-radius: 5px 5px;
+  border: none;
   cursor: pointer;
   padding: 10px;
   font-size: 17px;
   margin-top: 5px;
-  background-color: slateblue;
+  /* background-color: slateblue; */
+  background-image: linear-gradient(to bottom right, darkslateblue, slateblue);
   color: gainsboro;
+}
+.add-note-container button:hover {
+  scale: 105%;
+  transition: ease-in-out;
+  transition-duration: 0.3s;
+}
+
+.add-note-container textarea {
+  border-radius: 5px;
 }
 
 .note-container {
@@ -87,6 +106,7 @@ header {
   margin: 5px auto;
   border-radius: 10px;
   width: 50vw;
+  background-color: #1d1d1d;
 }
 
 .note-text {
@@ -100,11 +120,19 @@ header {
   font-size: 10px;
 }
 .delete {
-  background-color: darkred;
+  cursor: pointer;
+  /* background-color: darkred; */
+  background-image: linear-gradient(to bottom right, darkred, red);
   border: none;
   border-radius: 10%;
-  color: slategrey;
+  color: gainsboro;
   height: 30px;
   align-self: center;
+}
+
+.delete:hover {
+  scale: 105%;
+  transition: ease-in-out;
+  transition-duration: 0.3s;
 }
 </style>
