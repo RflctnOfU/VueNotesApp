@@ -5,11 +5,34 @@
       <textarea
         name="note"
         id="note"
-        cols="30"
-        rows="10"
+        cols="45"
+        rows="5"
         placeholder="New note"
       ></textarea>
       <button>Add note</button>
+    </div>
+    <div class="note-container">
+      <div class="note">
+        <div class="note-text">
+          <p class="text">note text</p>
+          <p class="date">date of post</p>
+        </div>
+        <button class="delete">delete</button>
+      </div>
+      <div class="note">
+        <div class="note-text">
+          <p class="text">note text</p>
+          <p class="date">date of post</p>
+        </div>
+        <button class="delete">delete</button>
+      </div>
+      <div class="note">
+        <div class="note-text">
+          <p class="text">note text</p>
+          <p class="date">date of post</p>
+        </div>
+        <button class="delete">delete</button>
+      </div>
     </div>
   </main>
 </template>
@@ -46,5 +69,42 @@ header {
   margin-top: 5px;
   background-color: slateblue;
   color: gainsboro;
+}
+
+.note-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+  margin: auto;
+}
+
+.note {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid slategrey;
+  padding: 10px;
+  margin: 5px auto;
+  border-radius: 10px;
+  width: 50vw;
+}
+
+.note-text {
+}
+.text {
+  font-family: monospace;
+  font-size: 20px;
+}
+
+.date {
+  font-size: 10px;
+}
+.delete {
+  background-color: darkred;
+  border: none;
+  border-radius: 10%;
+  color: slategrey;
+  height: 30px;
+  align-self: center;
 }
 </style>
