@@ -3,6 +3,20 @@ import { ref } from "vue";
 
 const newNote = ref("");
 const notes = ref([]);
+
+const addNote = () => {
+  notes.value.push({
+    id: Math.floor(Math.random() * 1000000),
+    text: newNote.value,
+    date: new Date().toLocaleDateString(),
+  });
+
+  newNote.value = "";
+};
+
+const deleteNote = (index) => {
+  notes.value.splice(index, 1);
+};
 </script>
 
 <template>
@@ -10,35 +24,22 @@ const notes = ref([]);
     <header><h1>Vue Notes App</h1></header>
     <div class="add-note-container">
       <textarea
+        v-model="newNote"
         name="note"
         id="note"
         cols="45"
         rows="5"
         placeholder="New note"
       ></textarea>
-      <button>Add note</button>
+      <button @click="addNote">Add note</button>
     </div>
     <div class="note-container">
-      <div class="note">
+      <div class="note" v-for="note in notes" :key="index">
         <div class="note-text">
-          <p class="text">note text</p>
-          <p class="date">date of post</p>
+          <p class="text">{{ note.text }}</p>
+          <p class="date">{{ note.date }}</p>
         </div>
-        <button class="delete">delete</button>
-      </div>
-      <div class="note">
-        <div class="note-text">
-          <p class="text">note text</p>
-          <p class="date">date of post</p>
-        </div>
-        <button class="delete">delete</button>
-      </div>
-      <div class="note">
-        <div class="note-text">
-          <p class="text">note text</p>
-          <p class="date">date of post</p>
-        </div>
-        <button class="delete">delete</button>
+        <button @click="deleteNote" class="delete">delete</button>
       </div>
     </div>
   </main>
