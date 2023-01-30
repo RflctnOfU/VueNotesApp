@@ -3,8 +3,12 @@ import { ref } from "vue";
 
 const newNote = ref("");
 const notes = ref([]);
+const errorMsg = ref("");
 
 const addNote = () => {
+  if (newNote.value.length < 7) {
+    return (errorMsg.value = "Please make your note longer than 7 characters");
+  }
   notes.value.push({
     id: Math.floor(Math.random() * 1000000),
     text: newNote.value,
@@ -12,6 +16,7 @@ const addNote = () => {
   });
 
   newNote.value = "";
+  errorMsg.value = "";
 };
 
 const deleteNote = (index) => {
@@ -23,6 +28,7 @@ const deleteNote = (index) => {
   <main>
     <header><h1>Vue Notes App</h1></header>
     <div class="add-note-container">
+      <p id="error" v-if="errorMsg">{{ errorMsg }}</p>
       <textarea
         v-model="newNote"
         name="note"
@@ -70,6 +76,9 @@ header {
   margin: 5px 0;
 }
 
+#error {
+  color: red;
+}
 .add-note-container button {
   border-radius: 5px 5px;
   border: none;
