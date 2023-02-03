@@ -40,12 +40,12 @@ const deleteNote = (index) => {
       <button @click="addNote">Add note</button>
     </div>
     <div class="note-container">
-      <div class="note" v-for="note in notes" :key="index">
+      <div class="note" v-for="(note, index) in notes" :key="note.id">
         <div class="note-text">
           <p class="text">{{ note.text }}</p>
           <p class="date">{{ note.date }}</p>
         </div>
-        <button @click="deleteNote" class="delete">delete</button>
+        <button @click="deleteNote(index)" class="delete">delete</button>
       </div>
     </div>
   </main>
